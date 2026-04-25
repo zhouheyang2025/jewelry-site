@@ -194,15 +194,16 @@ h1 {
 }
 
 .contact-image {
-  border: 1px solid #111;
-  padding: 16px;
-  background: rgba(242, 241, 236, 0.8);
+  border: none;
+  padding: 0;
+  background: none;
 }
 
 .contact-image img {
   width: 100%;
+  height: auto;
   display: block;
-  filter: grayscale(100%);
+  filter: none;
 }
 
 .contact-info h1 {
@@ -242,6 +243,12 @@ h1 {
   text-decoration: underline;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 @media (max-width: 800px) {
   .contact-page {
     grid-template-columns: 1fr;
@@ -252,8 +259,4 @@ h1 {
     grid-template-columns: 1fr;
     gap: 8px;
   }
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
