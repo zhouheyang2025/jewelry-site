@@ -184,4 +184,72 @@ h1 {
   .object-list {
     grid-template-columns: 1fr;
   }
+}.contact-page {
+  min-height: 100vh;
+  padding: 140px 32px 80px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.contact-image {
+  border: 1px solid #111;
+  padding: 16px;
+  background: rgba(242, 241, 236, 0.8);
+}
+
+.contact-image img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.contact-info h1 {
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 0;
+}
+
+.contact-details {
+  margin-top: 48px;
+  border-top: 1px solid #111;
+}
+
+.contact-details p {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  margin: 0;
+  border-bottom: 1px solid #111;
+  font-size: 15px;
+}
+
+.contact-details span {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-details a {
+  color: #111;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .contact-page {
+    grid-template-columns: 1fr;
+    padding: 160px 20px 64px;
+  }
+
+  .contact-details p {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
