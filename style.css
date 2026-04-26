@@ -2,10 +2,22 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #050605;
+  --panel: rgba(14, 16, 14, 0.88);
+  --text: #f2f4ef;
+  --muted: #a7aaa3;
+  --line: rgba(185, 255, 80, 0.42);
+  --line-soft: rgba(185, 255, 80, 0.14);
+  --accent: #b9ff50;
+  --silver: #c8cbc5;
+  --dark-silver: #6f746d;
+}
+
 body {
   margin: 0;
-  background: #f2f1ec;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
 }
@@ -16,9 +28,20 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
   background-size: 40px 40px;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(185, 255, 80, 0.08), transparent 30%),
+    radial-gradient(circle at 80% 60%, rgba(200, 203, 197, 0.08), transparent 28%);
   z-index: -1;
 }
 
@@ -32,15 +55,16 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #111;
-  background: rgba(242, 241, 236, 0.88);
-  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(5, 6, 5, 0.86);
+  backdrop-filter: blur(10px);
   z-index: 10;
 }
 
 .brand {
   font-size: 14px;
   letter-spacing: 0.12em;
+  color: var(--accent);
 }
 
 .nav {
@@ -50,7 +74,7 @@ body::before {
 
 .nav a,
 .hero-links a {
-  color: #111;
+  color: var(--silver);
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 0.06em;
@@ -59,7 +83,8 @@ body::before {
 
 .nav a:hover,
 .hero-links a:hover {
-  text-decoration: underline;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .hero {
@@ -68,7 +93,7 @@ body::before {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid var(--line);
 }
 
 .label {
@@ -76,6 +101,7 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 32px;
+  color: var(--accent);
 }
 
 h1 {
@@ -84,6 +110,7 @@ h1 {
   letter-spacing: -0.06em;
   margin: 0;
   max-width: 900px;
+  color: var(--text);
 }
 
 .intro {
@@ -91,12 +118,18 @@ h1 {
   max-width: 520px;
   font-size: 18px;
   line-height: 1.5;
+  color: var(--silver);
 }
 
 .hero-links {
   margin-top: 48px;
   display: flex;
   gap: 24px;
+}
+
+.hero-links a {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
 }
 
 .body-grid {
@@ -108,7 +141,7 @@ h1 {
 .body-placeholder {
   width: min(420px, 80vw);
   aspect-ratio: 3 / 4;
-  border: 1px solid #111;
+  border: 1px solid var(--accent);
   border-radius: 50% 50% 42% 42%;
   display: flex;
   align-items: center;
@@ -117,10 +150,14 @@ h1 {
   font-size: 12px;
   letter-spacing: 0.18em;
   line-height: 1.8;
+  color: var(--accent);
   background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
   background-size: 24px 24px;
+  box-shadow:
+    0 0 32px rgba(185, 255, 80, 0.12),
+    inset 0 0 40px rgba(185, 255, 80, 0.06);
 }
 
 .objects-preview {
@@ -130,22 +167,23 @@ h1 {
 .object-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid #111;
-  border-left: 1px solid #111;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .object-card {
   min-height: 260px;
   padding: 24px;
-  border-right: 1px solid #111;
-  border-bottom: 1px solid #111;
-  background: rgba(242, 241, 236, 0.76);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .object-card p {
   margin: 0 0 48px;
   font-size: 12px;
   letter-spacing: 0.12em;
+  color: var(--accent);
 }
 
 .object-card h2 {
@@ -153,38 +191,21 @@ h1 {
   line-height: 1;
   letter-spacing: -0.04em;
   margin: 0 0 32px;
+  color: var(--text);
 }
 
 .object-card span {
   display: block;
   font-size: 13px;
   line-height: 1.6;
+  color: var(--silver);
 }
 
-/* 手机端适配 */
-@media (max-width: 800px) {
-  .site-header {
-    height: auto;
-    padding: 20px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 16px;
-  }
+.object-card:hover {
+  background: rgba(185, 255, 80, 0.06);
+}
 
-  .nav {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 160px 20px 48px;
-  }
-
-  .object-list {
-    grid-template-columns: 1fr;
-  }
-}.contact-page {
+.contact-page {
   min-height: 100vh;
   padding: 140px 32px 80px;
   display: grid;
@@ -211,11 +232,12 @@ h1 {
   line-height: 0.95;
   letter-spacing: -0.06em;
   margin: 0;
+  color: var(--text);
 }
 
 .contact-details {
   margin-top: 48px;
-  border-top: 1px solid #111;
+  border-top: 1px solid var(--line);
 }
 
 .contact-details p {
@@ -224,23 +246,25 @@ h1 {
   gap: 24px;
   padding: 18px 0;
   margin: 0;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid var(--line);
   font-size: 15px;
+  color: var(--silver);
 }
 
 .contact-details span {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--accent);
 }
 
 .contact-details a {
-  color: #111;
+  color: var(--text);
   text-decoration: none;
 }
 
 .contact-details a:hover {
-  text-decoration: underline;
+  color: var(--accent);
 }
 
 img {
@@ -249,7 +273,35 @@ img {
   display: block;
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* 手机端适配 */
 @media (max-width: 800px) {
+  .site-header {
+    height: auto;
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 160px 20px 48px;
+  }
+
+  .object-list {
+    grid-template-columns: 1fr;
+  }
+
   .contact-page {
     grid-template-columns: 1fr;
     padding: 160px 20px 64px;
