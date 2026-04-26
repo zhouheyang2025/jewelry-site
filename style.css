@@ -149,20 +149,74 @@ h1 {
   grid-template-columns: repeat(12, 1fr);
   gap: var(--grid-gap);
   border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-text {
   grid-column: 1 / span 7;
   align-self: end;
   padding-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
 
+/* 将原右侧模型区域变成首页背景层 */
 .body-grid {
-  grid-column: 9 / span 4;
-  align-self: center;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  width: 100%;
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  opacity: 0.16;
+  mix-blend-mode: screen;
+
+  transform: translateX(26vw) scale(0.9);
+  transform-origin: center center;
+}
+
+/* 去掉模型外框，让人体直接成为背景 */
+.body-placeholder {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 背景模型不需要标签，避免干扰首页标题 */
+.body-placeholder-label {
+  display: none;
+}
+
+.body-model-viewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  --poster-color: transparent;
+}
+
+/* 如果临时用 PNG 图片，也跟 3D 模型同样铺开 */
+.body-model-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .hero-links {
@@ -174,29 +228,6 @@ h1 {
 .hero-links a {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--line);
-}
-
-.body-placeholder {
-  width: min(400px, 78vw);
-  aspect-ratio: 3 / 4;
-  border: 1px solid var(--accent);
-  border-radius: 50% 50% 42% 42%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: "SF Mono", "IBM Plex Mono", "Roboto Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  line-height: 1.8;
-  color: var(--accent);
-  background:
-    linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
-  background-size: 24px 24px;
-  box-shadow:
-    0 0 32px rgba(185, 255, 80, 0.1),
-    inset 0 0 40px rgba(185, 255, 80, 0.05);
 }
 
 /* Objects */
@@ -348,19 +379,19 @@ h1 {
     padding-top: 156px;
   }
 
-  .hero-text,
-  .body-grid {
-    grid-column: auto;
-  }
-
   .hero-text {
+    grid-column: auto;
     align-self: start;
     padding-bottom: 0;
   }
 
-  .body-grid {
-    margin-top: 48px;
-  }
+.body-grid {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  transform: translateX(34vw) scale(1.25);
+}
 
   .object-list {
     grid-template-columns: 1fr;
@@ -384,7 +415,9 @@ h1 {
     grid-template-columns: 1fr;
     gap: 6px;
   }
-}.page-hero {
+}
+
+.page-hero {
   min-height: 72vh;
   padding: 140px 32px 80px;
   border-bottom: 1px solid var(--line);
@@ -678,7 +711,9 @@ h1 {
   .object-index-card {
     min-height: auto;
   }
-}/* Archive page */
+}
+
+/* Archive page */
 
 .archive-section,
 .process-map-section,

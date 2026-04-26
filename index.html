@@ -7,6 +7,11 @@
   <title>Body Objects</title>
 
   <link rel="stylesheet" href="style.css" />
+
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+  </script>
 </head>
 
 <body>
@@ -25,6 +30,26 @@
 
   <main>
     <section class="hero">
+      <div class="body-grid">
+        <div class="body-placeholder">
+          <div class="body-placeholder-label">BODY MODEL / INDEX VIEW</div>
+
+          <model-viewer
+  class="body-model-viewer"
+  src="models/body-wireframe.glb"
+  alt="3D wireframe human body model"
+  auto-rotate
+  rotation-per-second="5deg"
+  camera-orbit="0deg 78deg 100m"
+  field-of-view="34deg"
+  camera-target="0m 10m 0m"
+  exposure="1"
+  shadow-intensity="0"
+  interaction-prompt="none">
+</model-viewer>
+        </div>
+      </div>
+
       <div class="hero-text">
         <p class="label">OBJECT INDEX / 001</p>
 
@@ -36,14 +61,8 @@
         </p>
 
         <div class="hero-links">
-          <a href="#">View Objects</a>
-          <a href="#">Body Index</a>
-        </div>
-      </div>
-
-      <div class="body-grid">
-        <div class="body-placeholder">
-          BODY<br />GRID<br />MODEL
+          <a href="objects.html">View Objects</a>
+          <a href="objects.html">Body Index</a>
         </div>
       </div>
     </section>
@@ -54,23 +73,29 @@
       <div class="object-list">
         <article class="object-card">
           <p>C-01</p>
-          <h2>Clavicle Gauge</h2>
-          <span>Body Area: Clavicle</span>
-          <span>Status: Prototype</span>
+          <div>
+            <h2>Clavicle Gauge</h2>
+            <span>Body Area: Clavicle</span>
+            <span>Status: Prototype</span>
+          </div>
         </article>
 
         <article class="object-card">
           <p>E-01</p>
-          <h2>Ear Coordinate Study</h2>
-          <span>Body Area: Ear</span>
-          <span>Status: Archive</span>
+          <div>
+            <h2>Ear Coordinate Study</h2>
+            <span>Body Area: Ear</span>
+            <span>Status: Archive</span>
+          </div>
         </article>
 
         <article class="object-card">
           <p>H-01</p>
-          <h2>Hand Measuring Object</h2>
-          <span>Body Area: Hand</span>
-          <span>Status: Made to Order</span>
+          <div>
+            <h2>Hand Measuring Object</h2>
+            <span>Body Area: Hand</span>
+            <span>Status: Made to Order</span>
+          </div>
         </article>
       </div>
     </section>
