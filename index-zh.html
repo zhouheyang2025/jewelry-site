@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>身体物件 | Investigation</title>
-  <link rel="stylesheet" href="style.css?v=manrope-archive-20260429" />
+  <title>格物</title>
+  <link rel="stylesheet" href="style.css?v=preview-tune-20260429" />
 </head>
 
-<body class="zh-site">
+<body class="home-page zh-site">
   <header class="site-header">
-    <a class="brand" href="index-zh.html" aria-current="page">Investigation</a>
+    <a class="brand" href="index-zh.html" aria-current="page">格物</a>
 
     <nav class="nav" aria-label="主导航">
-      <a href="index-zh.html">Investigation</a>
+      <a href="index-zh.html">首饰</a>
       <a href="contact-zh.html">信息</a>
       <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">艺术家作品集</a>
       <a class="language-link" href="index.html">EN</a>
@@ -20,19 +20,17 @@
   </header>
 
   <main>
-    <section class="home-index" aria-labelledby="home-title">
-      <p class="archive-mark">首饰索引</p>
+    <section class="home-index home-index--interactive home-index--compact" aria-labelledby="home-title" data-index-browser data-preview-mode="adaptive">
+      <h1 class="archive-mark" id="home-title">首饰索引</h1>
 
-      <div class="home-statement">
-        <h1 id="home-title">INVESTIGATION</h1>
-        <p>以身体为尺度的可佩戴物件。</p>
+      <div class="home-statement home-statement--compact">
+        <p>身体、材料与测量的可佩戴记录。</p>
       </div>
 
-      <section class="index-browser home-browser" data-index-browser aria-labelledby="home-objects-title">
+      <section class="index-browser home-browser" aria-labelledby="home-objects-title">
         <div>
           <div class="browser-heading">
-            <h2 id="home-objects-title">物件</h2>
-            <a class="small-link" href="#home-objects-title">全部记录</a>
+            <h2 id="home-objects-title">物件索引</h2>
           </div>
 
           <div class="index-table-head" aria-hidden="true">
@@ -46,7 +44,7 @@
 
           <ol class="index-list">
             <li id="c-01">
-              <a class="index-row" href="object-c01-zh.html" data-preview-key="c01">
+              <button class="index-row" type="button" data-preview-key="c01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-clavicle"><span>C-01</span></span>
                 <span class="row-code">C-01</span>
                 <span class="row-title">锁骨测规</span>
@@ -54,11 +52,11 @@
                 <span class="row-material">不锈钢 / 银 / 钢缆</span>
                 <span class="row-type">项链物件</span>
                 <span class="row-status">原型</span>
-              </a>
+              </button>
             </li>
 
             <li id="e-01">
-              <a class="index-row" href="#e-01" data-preview-key="e01">
+              <button class="index-row" type="button" data-preview-key="e01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-ear"><span>E-01</span></span>
                 <span class="row-code">E-01</span>
                 <span class="row-title">耳部坐标</span>
@@ -66,11 +64,11 @@
                 <span class="row-material">金属框架 / 测试材料</span>
                 <span class="row-type">耳部物件</span>
                 <span class="row-status">档案</span>
-              </a>
+              </button>
             </li>
 
             <li id="h-01">
-              <a class="index-row" href="#h-01" data-preview-key="h01">
+              <button class="index-row" type="button" data-preview-key="h01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-hand"><span>H-01</span></span>
                 <span class="row-code">H-01</span>
                 <span class="row-title">手部测量物</span>
@@ -78,52 +76,34 @@
                 <span class="row-material">银 / 不锈钢 / 钢缆</span>
                 <span class="row-type">手部物件</span>
                 <span class="row-status">进行中</span>
-              </a>
+              </button>
             </li>
           </ol>
         </div>
-
-        <aside class="index-preview" data-preview-stage aria-hidden="true">
-          <div class="preview-stage">
-            <div class="preview-empty"></div>
-
-            <article class="preview-card" data-preview-card="c01">
-              <div class="preview-media media-clavicle"><span>C-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>名称</dt><dd>锁骨测规</dd></div>
-                <div><dt>类型</dt><dd>项链物件</dd></div>
-                <div><dt>进度</dt><dd>原型</dd></div>
-              </dl>
-            </article>
-
-            <article class="preview-card" data-preview-card="e01">
-              <div class="preview-media media-ear"><span>E-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>名称</dt><dd>耳部坐标</dd></div>
-                <div><dt>类型</dt><dd>耳部物件</dd></div>
-                <div><dt>进度</dt><dd>档案</dd></div>
-              </dl>
-            </article>
-
-            <article class="preview-card" data-preview-card="h01">
-              <div class="preview-media media-hand"><span>H-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>名称</dt><dd>手部测量物</dd></div>
-                <div><dt>类型</dt><dd>手部物件</dd></div>
-                <div><dt>进度</dt><dd>进行中</dd></div>
-              </dl>
-            </article>
-          </div>
-        </aside>
       </section>
 
-      <footer class="home-footer">
-        <a href="contact-zh.html">联系</a>
-        <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">艺术家作品集</a>
-      </footer>
+      <aside class="index-preview home-preview" id="home-preview" data-preview-stage aria-hidden="true">
+        <div class="preview-stage">
+          <article class="preview-card" data-preview-card="c01">
+            <div class="preview-media media-clavicle" role="img" aria-label="C-01 锁骨测规预览图"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">以锁骨线为尺度的身体研究。</p>
+          </article>
+
+          <article class="preview-card" data-preview-card="e01">
+            <div class="preview-media media-ear" role="img" aria-label="E-01 耳部坐标预览图"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">围绕耳部位置展开的坐标研究。</p>
+          </article>
+
+          <article class="preview-card" data-preview-card="h01">
+            <div class="preview-media media-hand" role="img" aria-label="H-01 手部测量物预览图"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">用于记录手部位置的测量研究。</p>
+          </article>
+        </div>
+      </aside>
+
     </section>
   </main>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=home-mockup-20260429" defer></script>
 </body>
 </html>
