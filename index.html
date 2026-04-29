@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Investigation</title>
-  <link rel="stylesheet" href="style.css?v=index-row-title-20260429" />
+  <link rel="stylesheet" href="style.css?v=compact-spacing-20260429" />
 </head>
 
-<body>
+<body class="home-page">
   <header class="site-header">
     <a class="brand" href="index.html" aria-current="page">Investigation</a>
 
@@ -20,19 +20,18 @@
   </header>
 
   <main>
-    <section class="home-index" aria-labelledby="home-title">
-      <p class="archive-mark">Jewelry index</p>
+    <section class="home-index home-index--interactive" aria-labelledby="home-title" data-index-browser data-preview-mode="adaptive">
+      <p class="archive-mark">JEWELRY INDEX</p>
 
       <div class="home-statement">
-        <h1 id="home-title">INVESTIGATION</h1>
+        <h1 id="home-title">Investigation</h1>
         <p>Wearable records of body, material, and measurement.</p>
       </div>
 
-      <section class="index-browser home-browser" data-index-browser aria-labelledby="home-objects-title">
+      <section class="index-browser home-browser" aria-labelledby="home-objects-title">
         <div>
           <div class="browser-heading">
-            <h2 id="home-objects-title">Objects</h2>
-            <a class="small-link" href="#home-objects-title">All records</a>
+            <h2 id="home-objects-title">Object Index</h2>
           </div>
 
           <div class="index-table-head" aria-hidden="true">
@@ -46,7 +45,7 @@
 
           <ol class="index-list">
             <li id="c-01">
-              <a class="index-row" href="object-c01.html" data-preview-key="c01">
+              <button class="index-row" type="button" data-preview-key="c01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-clavicle"><span>C-01</span></span>
                 <span class="row-code">C-01</span>
                 <span class="row-title">Clavicle Gauge</span>
@@ -54,11 +53,11 @@
                 <span class="row-material">Stainless steel / silver / cable</span>
                 <span class="row-type">Necklace object</span>
                 <span class="row-status">Prototype</span>
-              </a>
+              </button>
             </li>
 
             <li id="e-01">
-              <a class="index-row" href="#e-01" data-preview-key="e01">
+              <button class="index-row" type="button" data-preview-key="e01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-ear"><span>E-01</span></span>
                 <span class="row-code">E-01</span>
                 <span class="row-title">Ear Coordinate Study</span>
@@ -66,11 +65,11 @@
                 <span class="row-material">Metal frame / test material</span>
                 <span class="row-type">Ear object</span>
                 <span class="row-status">Archive</span>
-              </a>
+              </button>
             </li>
 
             <li id="h-01">
-              <a class="index-row" href="#h-01" data-preview-key="h01">
+              <button class="index-row" type="button" data-preview-key="h01" aria-controls="home-preview" aria-pressed="false">
                 <span class="row-thumb media-hand"><span>H-01</span></span>
                 <span class="row-code">H-01</span>
                 <span class="row-title">Hand Measuring Object</span>
@@ -78,48 +77,34 @@
                 <span class="row-material">Silver / stainless steel / cable</span>
                 <span class="row-type">Hand object</span>
                 <span class="row-status">In progress</span>
-              </a>
+              </button>
             </li>
           </ol>
         </div>
-
-        <aside class="index-preview" data-preview-stage aria-hidden="true">
-          <div class="preview-stage">
-            <div class="preview-empty"></div>
-
-            <article class="preview-card" data-preview-card="c01">
-              <div class="preview-media media-clavicle"><span>C-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>Name</dt><dd>Clavicle Gauge</dd></div>
-                <div><dt>Type</dt><dd>Necklace object</dd></div>
-                <div><dt>Status</dt><dd>Prototype</dd></div>
-              </dl>
-            </article>
-
-            <article class="preview-card" data-preview-card="e01">
-              <div class="preview-media media-ear"><span>E-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>Name</dt><dd>Ear Coordinate Study</dd></div>
-                <div><dt>Type</dt><dd>Ear object</dd></div>
-                <div><dt>Status</dt><dd>Archive</dd></div>
-              </dl>
-            </article>
-
-            <article class="preview-card" data-preview-card="h01">
-              <div class="preview-media media-hand"><span>H-01</span></div>
-              <dl class="preview-facts">
-                <div><dt>Name</dt><dd>Hand Measuring Object</dd></div>
-                <div><dt>Type</dt><dd>Hand object</dd></div>
-                <div><dt>Status</dt><dd>In progress</dd></div>
-              </dl>
-            </article>
-          </div>
-        </aside>
       </section>
+
+      <aside class="index-preview home-preview" id="home-preview" data-preview-stage aria-hidden="true">
+        <div class="preview-stage">
+          <article class="preview-card" data-preview-card="c01">
+            <div class="preview-media media-clavicle" role="img" aria-label="Preview diagram for C-01 Clavicle Gauge"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">A body-scale study for the clavicle line.</p>
+          </article>
+
+          <article class="preview-card" data-preview-card="e01">
+            <div class="preview-media media-ear" role="img" aria-label="Preview diagram for E-01 Ear Coordinate Study"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">A coordinate study around the ear.</p>
+          </article>
+
+          <article class="preview-card" data-preview-card="h01">
+            <div class="preview-media media-hand" role="img" aria-label="Preview diagram for H-01 Hand Measuring Object"><span aria-hidden="true"></span></div>
+            <p class="preview-caption">A measuring study for hand position.</p>
+          </article>
+        </div>
+      </aside>
 
     </section>
   </main>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=home-mockup-20260429" defer></script>
 </body>
 </html>
