@@ -3,103 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>身体物件 | Body Objects</title>
-
   <link rel="stylesheet" href="style.css" />
-
-  <script
-    type="module"
-    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
-  </script>
 </head>
 
 <body class="zh-site">
   <header class="site-header">
-    <div class="brand">BODY OBJECTS</div>
+    <a class="brand" href="index-zh.html" aria-current="page">Body Objects</a>
 
-    <nav class="nav">
-      <a href="index-zh.html">首页</a>
-      <a href="objects-zh.html">作品</a>
-      <a href="archive-zh.html">档案</a>
-      <a href="process-zh.html">过程</a>
-      <a href="about-zh.html">关于</a>
-      <a href="contact-zh.html">联系</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="objects-zh.html">物件</a>
+      <a href="contact-zh.html">信息</a>
+      <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">艺术家作品集</a>
       <a class="language-link" href="index.html">EN</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="body-grid">
-        <div class="body-placeholder">
-          <div class="body-placeholder-label">BODY MODEL / INDEX VIEW</div>
+    <section class="home-index" aria-labelledby="home-title">
+      <p class="archive-mark">首饰索引</p>
 
-          <model-viewer
-  class="body-model-viewer"
-  src="models/body-wireframe.glb"
-  alt="3D wireframe human body model"
-  auto-rotate
-  rotation-per-second="5deg"
-  camera-orbit="0deg 78deg 100m"
-  field-of-view="34deg"
-  camera-target="0m 10m 0m"
-  exposure="1"
-  shadow-intensity="0"
-  interaction-prompt="none">
-</model-viewer>
+      <div class="home-statement">
+        <h1 id="home-title">Body Objects</h1>
+        <p>以身体为尺度的可佩戴物件。</p>
+      </div>
+
+      <section class="index-browser home-browser" data-index-browser aria-labelledby="home-objects-title">
+        <div>
+          <div class="browser-heading">
+            <h2 id="home-objects-title">物件</h2>
+            <a class="small-link" href="objects-zh.html">全部记录</a>
+          </div>
+
+          <ol class="index-list">
+            <li>
+              <a class="index-row" href="object-c01-zh.html" data-preview-key="c01">
+                <span class="row-thumb media-clavicle"><span>C-01</span></span>
+                <span class="row-code">C-01</span>
+                <span class="row-title">锁骨测规</span>
+                <span class="row-year">待定</span>
+                <span class="row-material">不锈钢 / 银 / 钢缆</span>
+                <span class="row-type">项链物件</span>
+                <span class="row-status">原型</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="index-row" href="objects-zh.html#e-01" data-preview-key="e01">
+                <span class="row-thumb media-ear"><span>E-01</span></span>
+                <span class="row-code">E-01</span>
+                <span class="row-title">耳部坐标</span>
+                <span class="row-year">待定</span>
+                <span class="row-material">金属框架 / 测试材料</span>
+                <span class="row-type">耳部物件</span>
+                <span class="row-status">档案</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="index-row" href="objects-zh.html#h-01" data-preview-key="h01">
+                <span class="row-thumb media-hand"><span>H-01</span></span>
+                <span class="row-code">H-01</span>
+                <span class="row-title">手部测量物</span>
+                <span class="row-year">待定</span>
+                <span class="row-material">银 / 不锈钢 / 钢缆</span>
+                <span class="row-type">手部物件</span>
+                <span class="row-status">进行中</span>
+              </a>
+            </li>
+          </ol>
         </div>
-      </div>
 
-      <div class="hero-text">
-        <p class="label">OBJECT INDEX / 001</p>
+        <aside class="index-preview" data-preview-stage aria-hidden="true">
+          <div class="preview-stage">
+            <div class="preview-empty"></div>
 
-        <h1>以身体为尺度的首饰实验</h1>
+            <article class="preview-card" data-preview-card="c01">
+              <div class="preview-media media-clavicle"><span>C-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>名称</dt><dd>锁骨测规</dd></div>
+                <div><dt>类型</dt><dd>项链物件</dd></div>
+                <div><dt>进度</dt><dd>原型</dd></div>
+              </dl>
+            </article>
 
-        <p class="intro">
-          从锁骨、耳部和手势等身体线索出发，建立一组可佩戴的测量物件，
-          它们不只是装饰，而是观察、定位和校准身体关系的工具
-        </p>
+            <article class="preview-card" data-preview-card="e01">
+              <div class="preview-media media-ear"><span>E-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>名称</dt><dd>耳部坐标</dd></div>
+                <div><dt>类型</dt><dd>耳部物件</dd></div>
+                <div><dt>进度</dt><dd>档案</dd></div>
+              </dl>
+            </article>
 
-        <div class="hero-links">
-          <a href="objects-zh.html">查看作品</a>
-          <a href="objects-zh.html">身体索引</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="objects-preview">
-      <p class="label">SELECTED OBJECTS</p>
-
-      <div class="object-list">
-        <article class="object-card">
-          <p>C-01</p>
-          <div>
-            <h2>锁骨测规</h2>
-            <span>线索：锁骨距离</span>
-            <span>进度：原型可询</span>
+            <article class="preview-card" data-preview-card="h01">
+              <div class="preview-media media-hand"><span>H-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>名称</dt><dd>手部测量物</dd></div>
+                <div><dt>类型</dt><dd>手部物件</dd></div>
+                <div><dt>进度</dt><dd>进行中</dd></div>
+              </dl>
+            </article>
           </div>
-        </article>
+        </aside>
+      </section>
 
-        <article class="object-card">
-          <p>E-01</p>
-          <div>
-            <h2>耳部坐标</h2>
-            <span>线索：耳廓边界</span>
-            <span>进度：档案研究</span>
-          </div>
-        </article>
-
-        <article class="object-card">
-          <p>H-01</p>
-          <div>
-            <h2>手势限度</h2>
-            <span>线索：手部动作</span>
-            <span>进度：发展中</span>
-          </div>
-        </article>
-      </div>
+      <footer class="home-footer">
+        <a href="contact-zh.html">联系</a>
+        <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">艺术家作品集</a>
+      </footer>
     </section>
   </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

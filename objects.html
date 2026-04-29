@@ -3,176 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Objects | Body Objects</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <div class="brand">BODY OBJECTS</div>
+    <a class="brand" href="index.html">Body Objects</a>
 
-    <nav class="nav">
-      <a href="index.html">Index</a>
-      <a href="objects.html">Objects</a>
-      <a href="archive.html">Archive</a>
-      <a href="process.html">Process</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="objects.html" aria-current="page">Objects</a>
+      <a href="contact.html">Info</a>
+      <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">Artist Portfolio</a>
       <a class="language-link" href="objects-zh.html">中文</a>
     </nav>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <p class="label">OBJECTS / WEARABLE INDEX</p>
+  <main class="page-shell">
+    <section class="page-intro">
+      <p class="archive-mark">Objects / collection</p>
 
-      <h1>Objects developed through drawing, measurement, and bodily positioning.</h1>
-
-      <p class="intro">
-        This section collects available pieces, prototypes, and body-related jewelry objects.
-        Each object is organized as a technical record: by body area, material, status, and wearing logic.
-      </p>
+      <div class="page-heading">
+        <h1>Object index</h1>
+        <p class="page-note">Records by body position, material, and type.</p>
+      </div>
     </section>
 
-    <section class="object-index-section">
-      <div class="section-header">
-        <p class="label">INDEX / 001</p>
-        <p>
-          The objects are not arranged only by product type, but by the body areas and
-          measurement systems they respond to.
-        </p>
+    <section class="index-browser" data-index-browser aria-labelledby="objects-title">
+      <div>
+        <div class="browser-heading">
+          <h2 id="objects-title">Records</h2>
+          <a class="small-link" href="contact.html">Inquiry</a>
+        </div>
+
+        <ol class="index-list">
+          <li id="c-01">
+            <a class="index-row" href="object-c01.html" data-preview-key="c01">
+              <span class="row-thumb media-clavicle"><span>C-01</span></span>
+              <span class="row-code">C-01</span>
+              <span class="row-title">Clavicle Gauge</span>
+              <span class="row-year">TBC</span>
+              <span class="row-material">Stainless steel / silver / cable</span>
+              <span class="row-type">Necklace object</span>
+              <span class="row-status">Prototype</span>
+            </a>
+          </li>
+
+          <li id="e-01">
+            <a class="index-row" href="#e-01" data-preview-key="e01">
+              <span class="row-thumb media-ear"><span>E-01</span></span>
+              <span class="row-code">E-01</span>
+              <span class="row-title">Ear Coordinate Study</span>
+              <span class="row-year">TBC</span>
+              <span class="row-material">Metal frame / test material</span>
+              <span class="row-type">Ear object</span>
+              <span class="row-status">Archive</span>
+            </a>
+          </li>
+
+          <li id="h-01">
+            <a class="index-row" href="#h-01" data-preview-key="h01">
+              <span class="row-thumb media-hand"><span>H-01</span></span>
+              <span class="row-code">H-01</span>
+              <span class="row-title">Hand Measuring Object</span>
+              <span class="row-year">TBC</span>
+              <span class="row-material">Silver / stainless steel / cable</span>
+              <span class="row-type">Hand object</span>
+              <span class="row-status">In progress</span>
+            </a>
+          </li>
+        </ol>
       </div>
 
-      <div class="object-index-grid">
-        <a class="object-index-card" href="object-c01.html">
-          <div class="object-card-meta">
-            <span>C-01</span>
-            <span>Available as prototype</span>
-          </div>
+      <aside class="index-preview" data-preview-stage aria-hidden="true">
+        <div class="preview-stage">
+          <div class="preview-empty"></div>
 
-          <div class="object-card-image placeholder-image">
-            <span>CLAVICLE / BODY LINE</span>
-          </div>
-
-          <div class="object-card-content">
-            <h2>Clavicle Gauge</h2>
-
-            <dl>
-              <div>
-                <dt>Body Area</dt>
-                <dd>Clavicle / Upper chest</dd>
-              </div>
-
-              <div>
-                <dt>Type</dt>
-                <dd>Necklace / Body measuring object</dd>
-              </div>
-
-              <div>
-                <dt>Material</dt>
-                <dd>Stainless steel / Silver / Cable</dd>
-              </div>
-
-              <div>
-                <dt>Status</dt>
-                <dd>Prototype / Made to order</dd>
-              </div>
+          <article class="preview-card" data-preview-card="c01">
+            <div class="preview-media media-clavicle"><span>C-01</span></div>
+            <dl class="preview-facts">
+              <div><dt>Name</dt><dd>Clavicle Gauge</dd></div>
+              <div><dt>Material</dt><dd>Stainless steel / silver / cable</dd></div>
+              <div><dt>Status</dt><dd>Prototype</dd></div>
             </dl>
+          </article>
 
-            <p>
-              A wearable object that frames the distance between the clavicles as a visible
-              measuring line between breath, posture, and self-presentation.
-            </p>
-          </div>
-        </a>
-
-        <article class="object-index-card is-disabled">
-          <div class="object-card-meta">
-            <span>E-01</span>
-            <span>Archive study</span>
-          </div>
-
-          <div class="object-card-image placeholder-image">
-            <span>EAR / COORDINATE</span>
-          </div>
-
-          <div class="object-card-content">
-            <h2>Ear Coordinate Study</h2>
-
-            <dl>
-              <div>
-                <dt>Body Area</dt>
-                <dd>Ear / Side profile</dd>
-              </div>
-
-              <div>
-                <dt>Type</dt>
-                <dd>Ear object / Position study</dd>
-              </div>
-
-              <div>
-                <dt>Material</dt>
-                <dd>Metal frame / Test material</dd>
-              </div>
-
-              <div>
-                <dt>Status</dt>
-                <dd>Archive / In development</dd>
-              </div>
+          <article class="preview-card" data-preview-card="e01">
+            <div class="preview-media media-ear"><span>E-01</span></div>
+            <dl class="preview-facts">
+              <div><dt>Name</dt><dd>Ear Coordinate Study</dd></div>
+              <div><dt>Material</dt><dd>Metal frame / test material</dd></div>
+              <div><dt>Status</dt><dd>Archive</dd></div>
             </dl>
+          </article>
 
-            <p>
-              A study of the ear as a small coordinate field, where ornament becomes a
-              device for locating edges, folds, and points of attachment.
-            </p>
-          </div>
-        </article>
-
-        <article class="object-index-card is-disabled">
-          <div class="object-card-meta">
-            <span>H-01</span>
-            <span>In development</span>
-          </div>
-
-          <div class="object-card-image placeholder-image">
-            <span>HAND / GESTURE</span>
-          </div>
-
-          <div class="object-card-content">
-            <h2>Hand Measuring Object</h2>
-
-            <dl>
-              <div>
-                <dt>Body Area</dt>
-                <dd>Hand / Finger / Gesture</dd>
-              </div>
-
-              <div>
-                <dt>Type</dt>
-                <dd>Ring / Hand object</dd>
-              </div>
-
-              <div>
-                <dt>Material</dt>
-                <dd>Silver / Stainless steel / Test cable</dd>
-              </div>
-
-              <div>
-                <dt>Status</dt>
-                <dd>Prototype / Research object</dd>
-              </div>
+          <article class="preview-card" data-preview-card="h01">
+            <div class="preview-media media-hand"><span>H-01</span></div>
+            <dl class="preview-facts">
+              <div><dt>Name</dt><dd>Hand Measuring Object</dd></div>
+              <div><dt>Material</dt><dd>Silver / stainless steel / cable</dd></div>
+              <div><dt>Status</dt><dd>In progress</dd></div>
             </dl>
-
-            <p>
-              A hand-based object that treats gesture as a measurable structure, turning
-              small movements into visible positions and limits.
-            </p>
-          </div>
-        </article>
-      </div>
+          </article>
+        </div>
+      </aside>
     </section>
   </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -3,69 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Contact | Body Objects</title>
-
+  <title>Info | Body Objects</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <div class="brand">BODY OBJECTS</div>
+    <a class="brand" href="index.html">Body Objects</a>
 
-    <nav class="nav">
-      <a href="index.html">Index</a>
+    <nav class="nav" aria-label="Primary navigation">
       <a href="objects.html">Objects</a>
-      <a href="archive.html">Archive</a>
-      <a href="process.html">Process</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" aria-current="page">Info</a>
+      <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">Artist Portfolio</a>
       <a class="language-link" href="contact-zh.html">中文</a>
     </nav>
   </header>
 
   <main>
-    <section class="contact-page">
-      <div class="contact-image">
-        <img src="images/self.png" alt="Portrait of the designer">
-      </div>
+    <section class="info-layout">
+      <p class="archive-mark">Contact / info</p>
 
-      <div class="contact-info">
-        <p class="label">CONTACT / INQUIRY</p>
+      <div class="info-main">
+        <div class="info-copy">
+          <h1>Body Objects</h1>
+          <p class="info-note">Jewelry records, prototypes, and body-scale studies.</p>
 
-        <h1>For inquiries, collaborations, and made-to-order pieces.</h1>
+          <dl class="contact-list">
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:zhouheyang2025@gmail.com">zhouheyang2025@gmail.com</a></dd>
+            </div>
 
-        <p class="intro">
-          This project works with jewelry, body measurement, technical drawing,
-          and wearable objects. For product inquiries, custom orders, or
-          collaboration proposals, please contact me by email.
-        </p>
+            <div>
+              <dt>Instagram</dt>
+              <dd><a href="https://www.instagram.com/productionplanninging/" target="_blank" rel="noopener">@productionplanninging</a></dd>
+            </div>
 
-        <div class="contact-details">
-          <p>
-            <span>Email</span>
-            <a href="mailto:zhouheyang2025@gmail.com">zhouheyang2025@gmail.com</a>
-          </p>
+            <div>
+              <dt>Location</dt>
+              <dd>Beijing / Shanghai</dd>
+            </div>
 
-          <p>
-            <span>Instagram</span>
-            <a href="https://www.instagram.com/productionplanninging/" target="_blank">@productionplanninging</a>
-          </p>
-
-          <p>
-            <span>Location</span>
-            Beijing / Shanghai / Available for remote collaboration
-          </p>
-
-          <p>
-            <span>Portfolio</span>
-            <span class="contact-reference">
-              <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">
-                Portfolio Link
-              </a>
-            </span>
-          </p>
+            <div>
+              <dt>Portfolio</dt>
+              <dd><a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">Artist Portfolio</a></dd>
+            </div>
+          </dl>
         </div>
+
+        <figure class="contact-portrait">
+          <img src="images/self.png" alt="Portrait of the designer" />
+        </figure>
       </div>
     </section>
   </main>

@@ -3,103 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Body Objects</title>
-
   <link rel="stylesheet" href="style.css" />
-
-  <script
-    type="module"
-    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
-  </script>
 </head>
 
 <body>
   <header class="site-header">
-    <div class="brand">BODY OBJECTS</div>
+    <a class="brand" href="index.html" aria-current="page">Body Objects</a>
 
-    <nav class="nav">
-      <a href="index.html">Index</a>
+    <nav class="nav" aria-label="Primary navigation">
       <a href="objects.html">Objects</a>
-      <a href="archive.html">Archive</a>
-      <a href="process.html">Process</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Info</a>
+      <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">Artist Portfolio</a>
       <a class="language-link" href="index-zh.html">中文</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="body-grid">
-        <div class="body-placeholder">
-          <div class="body-placeholder-label">BODY MODEL / INDEX VIEW</div>
+    <section class="home-index" aria-labelledby="home-title">
+      <p class="archive-mark">Jewelry index</p>
 
-          <model-viewer
-  class="body-model-viewer"
-  src="models/body-wireframe.glb"
-  alt="3D wireframe human body model"
-  auto-rotate
-  rotation-per-second="5deg"
-  camera-orbit="0deg 78deg 100m"
-  field-of-view="34deg"
-  camera-target="0m 10m 0m"
-  exposure="1"
-  shadow-intensity="0"
-  interaction-prompt="none">
-</model-viewer>
+      <div class="home-statement">
+        <h1 id="home-title">Body Objects</h1>
+        <p>Wearable objects measured against the body.</p>
+      </div>
+
+      <section class="index-browser home-browser" data-index-browser aria-labelledby="home-objects-title">
+        <div>
+          <div class="browser-heading">
+            <h2 id="home-objects-title">Objects</h2>
+            <a class="small-link" href="objects.html">All records</a>
+          </div>
+
+          <ol class="index-list">
+            <li>
+              <a class="index-row" href="object-c01.html" data-preview-key="c01">
+                <span class="row-thumb media-clavicle"><span>C-01</span></span>
+                <span class="row-code">C-01</span>
+                <span class="row-title">Clavicle Gauge</span>
+                <span class="row-year">TBC</span>
+                <span class="row-material">Stainless steel / silver / cable</span>
+                <span class="row-type">Necklace object</span>
+                <span class="row-status">Prototype</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="index-row" href="objects.html#e-01" data-preview-key="e01">
+                <span class="row-thumb media-ear"><span>E-01</span></span>
+                <span class="row-code">E-01</span>
+                <span class="row-title">Ear Coordinate Study</span>
+                <span class="row-year">TBC</span>
+                <span class="row-material">Metal frame / test material</span>
+                <span class="row-type">Ear object</span>
+                <span class="row-status">Archive</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="index-row" href="objects.html#h-01" data-preview-key="h01">
+                <span class="row-thumb media-hand"><span>H-01</span></span>
+                <span class="row-code">H-01</span>
+                <span class="row-title">Hand Measuring Object</span>
+                <span class="row-year">TBC</span>
+                <span class="row-material">Silver / stainless steel / cable</span>
+                <span class="row-type">Hand object</span>
+                <span class="row-status">In progress</span>
+              </a>
+            </li>
+          </ol>
         </div>
-      </div>
 
-      <div class="hero-text">
-        <p class="label">OBJECT INDEX / 001</p>
+        <aside class="index-preview" data-preview-stage aria-hidden="true">
+          <div class="preview-stage">
+            <div class="preview-empty"></div>
 
-        <h1>Jewelry as a measuring device for the body.</h1>
+            <article class="preview-card" data-preview-card="c01">
+              <div class="preview-media media-clavicle"><span>C-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>Name</dt><dd>Clavicle Gauge</dd></div>
+                <div><dt>Type</dt><dd>Necklace object</dd></div>
+                <div><dt>Status</dt><dd>Prototype</dd></div>
+              </dl>
+            </article>
 
-        <p class="intro">
-          A conceptual jewelry project working with technical drawing,
-          body measurement, and wearable objects.
-        </p>
+            <article class="preview-card" data-preview-card="e01">
+              <div class="preview-media media-ear"><span>E-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>Name</dt><dd>Ear Coordinate Study</dd></div>
+                <div><dt>Type</dt><dd>Ear object</dd></div>
+                <div><dt>Status</dt><dd>Archive</dd></div>
+              </dl>
+            </article>
 
-        <div class="hero-links">
-          <a href="objects.html">View Objects</a>
-          <a href="objects.html">Body Index</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="objects-preview">
-      <p class="label">SELECTED OBJECTS</p>
-
-      <div class="object-list">
-        <article class="object-card">
-          <p>C-01</p>
-          <div>
-            <h2>Clavicle Gauge</h2>
-            <span>Body Area: Clavicle</span>
-            <span>Status: Prototype</span>
+            <article class="preview-card" data-preview-card="h01">
+              <div class="preview-media media-hand"><span>H-01</span></div>
+              <dl class="preview-facts">
+                <div><dt>Name</dt><dd>Hand Measuring Object</dd></div>
+                <div><dt>Type</dt><dd>Hand object</dd></div>
+                <div><dt>Status</dt><dd>In progress</dd></div>
+              </dl>
+            </article>
           </div>
-        </article>
+        </aside>
+      </section>
 
-        <article class="object-card">
-          <p>E-01</p>
-          <div>
-            <h2>Ear Coordinate Study</h2>
-            <span>Body Area: Ear</span>
-            <span>Status: Archive</span>
-          </div>
-        </article>
-
-        <article class="object-card">
-          <p>H-01</p>
-          <div>
-            <h2>Hand Measuring Object</h2>
-            <span>Body Area: Hand</span>
-            <span>Status: Made to Order</span>
-          </div>
-        </article>
-      </div>
+      <footer class="home-footer">
+        <a href="contact.html">Contact</a>
+        <a href="https://zhouheyang2025.github.io/" target="_blank" rel="noopener">Artist Portfolio</a>
+      </footer>
     </section>
   </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
