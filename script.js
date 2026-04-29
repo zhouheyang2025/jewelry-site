@@ -14,18 +14,27 @@ window.addEventListener("keydown", () => {
 });
 
 function bindIndexPreview(browser) {
-  const rows = browser.querySelectorAll("[data-preview-key]");
+  const rows = [...browser.querySelectorAll("[data-preview-key]")];
   const preview = browser.querySelector("[data-preview-stage]");
 
   if (!rows.length || !preview) {
     return;
   }
 
-  const cards = preview.querySelectorAll("[data-preview-card]");
+  const cards = [...preview.querySelectorAll("[data-preview-card]")];
   const previewRoot = preview.closest("[data-preview-mode]");
   const previewMode = previewRoot ? previewRoot.dataset.previewMode : undefined;
   const isClickMode = previewMode === "click";
   const isAdaptiveMode = previewMode === "adaptive";
+  let activeKey = null;
+
+  function usesHoverPreview() {
+    return hoverPreviewQuery.matches && !mobilePreviewQuery.matches;
+  }
+
+  function usesTouchPreview() {
+    return isClickMode || (isAdaptiveMode && !usesHoverPreview());
+  }
 
   function removeInlinePreview() {
     browser.querySelectorAll(".mobile-row-preview").forEach((node) => node.remove());
@@ -54,11 +63,12 @@ function bindIndexPreview(browser) {
   }
 
   function activatePreview(key) {
-    const activeCard = [...cards].find((card) => card.dataset.previewCard === key);
-    const activeRow = [...rows].find((row) => row.dataset.previewKey === key);
+    const activeCard = cards.find((card) => card.dataset.previewCard === key);
+    const activeRow = rows.find((row) => row.dataset.previewKey === key);
 
     preview.classList.add("has-preview");
     preview.setAttribute("aria-hidden", "false");
+    activeKey = key;
 
     rows.forEach((row) => {
       const isActive = row.dataset.previewKey === key;
@@ -81,6 +91,7 @@ function bindIndexPreview(browser) {
   function clearPreview() {
     preview.classList.remove("has-preview");
     preview.setAttribute("aria-hidden", "true");
+    activeKey = null;
 
     rows.forEach((row) => {
       row.classList.remove("is-active");
@@ -95,23 +106,39 @@ function bindIndexPreview(browser) {
   }
 
   rows.forEach((row) => {
-    if (isAdaptiveMode && hoverPreviewQuery.matches) {
-      row.addEventListener("pointerenter", () => activatePreview(row.dataset.previewKey));
-      row.addEventListener("pointerleave", clearPreview);
+    row.addEventListener("pointerenter", () => {
+      if (isAdaptiveMode && usesHoverPreview()) {
+        activatePreview(row.dataset.previewKey);
+      }
+    });
+
+    row.addEventListener("pointerleave", () => {
+      if (isAdaptiveMode && usesHoverPreview()) {
+        clearPreview();
+      }
+    });
+
+    if (isAdaptiveMode) {
       row.addEventListener("focus", () => {
-        if (!lastInputWasPointer) {
+        if (!lastInputWasPointer && usesHoverPreview()) {
           activatePreview(row.dataset.previewKey);
         }
       });
       row.addEventListener("blur", clearPreview);
-      row.addEventListener("click", (event) => event.preventDefault());
-
-      return;
-    }
-
-    if (isAdaptiveMode) {
       row.addEventListener("click", (event) => {
-        event.preventDefault();
+        if (row.matches("button")) {
+          event.preventDefault();
+        }
+
+        if (usesHoverPreview()) {
+          return;
+        }
+
+        if (activeKey === row.dataset.previewKey) {
+          clearPreview();
+          return;
+        }
+
         activatePreview(row.dataset.previewKey);
       });
 
@@ -134,9 +161,43 @@ function bindIndexPreview(browser) {
     }
   });
 
-  if (!isClickMode && hoverPreviewQuery.matches) {
-    browser.addEventListener("pointerleave", clearPreview);
+  if (!isClickMode) {
+    browser.addEventListener("pointerleave", () => {
+      if (usesHoverPreview()) {
+        clearPreview();
+      }
+    });
   }
+
+  document.addEventListener("click", (event) => {
+    if (!usesTouchPreview() || !activeKey) {
+      return;
+    }
+
+    const target = event.target instanceof Element ? event.target : event.target.parentElement;
+
+    if (!target) {
+      return;
+    }
+
+    const previewTrigger = target.closest("[data-preview-key]");
+
+    if (
+      (previewTrigger && browser.contains(previewTrigger)) ||
+      preview.contains(target) ||
+      target.closest(".mobile-row-preview")
+    ) {
+      return;
+    }
+
+    clearPreview();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && activeKey) {
+      clearPreview();
+    }
+  });
 
   const handlePreviewModeChange = () => {
     if (isAdaptiveMode) {
