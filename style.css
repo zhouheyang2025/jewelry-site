@@ -1469,7 +1469,7 @@ h3 {
   --record-cols: minmax(48px, 0.46fr) minmax(144px, 1.24fr) minmax(52px, 0.5fr) minmax(172px, 1.56fr) minmax(112px, 1fr) minmax(86px, 0.78fr);
   --record-gap: clamp(16px, 1.8vw, 28px);
   --preview-top-offset: 36px;
-  --preview-media-max: 390px;
+  --preview-media-max: 360px;
   grid-template-columns: minmax(0, 1fr) clamp(456px, 31vw, 560px);
   column-gap: clamp(44px, 5vw, 88px);
   padding: clamp(56px, 5.5vw, 78px) 0 clamp(78px, 9vw, 132px);
@@ -1707,12 +1707,12 @@ h3 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(12px) scale(0.985);
+  transform: translateX(-4px);
   transform-origin: top left;
   transition:
-    opacity 300ms ease-in-out,
-    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 300ms;
+    opacity 240ms ease-in-out,
+    transform 260ms ease-in-out,
+    visibility 0s linear 240ms;
   will-change: opacity, transform;
 }
 
@@ -1720,7 +1720,7 @@ h3 {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(0) scale(1);
+  transform: translateX(0);
   transition-delay: 0s;
 }
 
@@ -1798,7 +1798,7 @@ h3 {
   .home-index--interactive {
     --record-cols: minmax(44px, 0.42fr) minmax(126px, 1.12fr) minmax(48px, 0.44fr) minmax(154px, 1.28fr) minmax(92px, 0.78fr) minmax(78px, 0.68fr);
     --record-gap: clamp(14px, 1.2vw, 20px);
-    --preview-media-max: 390px;
+    --preview-media-max: 360px;
     grid-template-columns: minmax(0, 1fr) clamp(360px, 31vw, 470px);
     column-gap: clamp(34px, 4vw, 60px);
   }
@@ -1814,7 +1814,7 @@ h3 {
 
 @media (max-width: 1180px) {
   .home-index--interactive {
-    --preview-media-max: 540px;
+    --preview-media-max: 500px;
     grid-template-columns: 1fr;
     padding-top: clamp(48px, 6vw, 70px);
   }
