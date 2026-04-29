@@ -1466,10 +1466,12 @@ h3 {
 }
 
 .home-index--interactive {
-  --record-cols: minmax(58px, 0.5fr) minmax(170px, 1.35fr) minmax(64px, 0.54fr) minmax(220px, 1.82fr) minmax(150px, 1.22fr) minmax(112px, 0.95fr);
-  --record-gap: clamp(18px, 2.1vw, 32px);
-  grid-template-columns: minmax(0, 1fr) clamp(318px, 24.5vw, 430px);
-  column-gap: clamp(54px, 5.9vw, 106px);
+  --record-cols: minmax(48px, 0.46fr) minmax(144px, 1.24fr) minmax(52px, 0.5fr) minmax(172px, 1.56fr) minmax(112px, 1fr) minmax(86px, 0.78fr);
+  --record-gap: clamp(16px, 1.8vw, 28px);
+  --preview-top-offset: 36px;
+  --preview-media-max: 390px;
+  grid-template-columns: minmax(0, 1fr) clamp(456px, 31vw, 560px);
+  column-gap: clamp(44px, 5vw, 88px);
   padding: clamp(56px, 5.5vw, 78px) 0 clamp(78px, 9vw, 132px);
 }
 
@@ -1509,6 +1511,7 @@ h3 {
 }
 
 .home-index--interactive .home-browser {
+  width: min(100%, clamp(720px, 52vw, 900px));
   margin-top: clamp(72px, 5.8vw, 94px);
 }
 
@@ -1554,8 +1557,9 @@ h3 {
   padding: 21px 0;
   border-bottom: 1px solid var(--home-line-soft);
   transition:
-    background-color 160ms ease,
-    color 160ms ease;
+    background-color 220ms ease-in-out,
+    color 220ms ease-in-out,
+    border-color 220ms ease-in-out;
 }
 
 .home-index--interactive .index-table-head > span,
@@ -1604,19 +1608,30 @@ h3 {
   grid-row: 1 / span 3;
   position: sticky;
   top: 118px;
-  min-height: clamp(560px, 43vw, 650px);
+  min-height: clamp(620px, 47vw, 760px);
   margin-top: clamp(34px, 3vw, 50px);
-  padding-left: clamp(38px, 3.8vw, 58px);
+  padding-left: clamp(20px, 2.2vw, 34px);
   border-top: 0;
   border-left: 0;
 }
 
 .home-index--interactive .home-preview.has-preview {
-  border-left: 1px solid var(--home-line-soft);
+  border-left: 0;
+}
+
+.home-index--interactive .home-preview.has-preview::before {
+  position: absolute;
+  top: var(--preview-top-offset);
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--home-line-soft);
+  content: "";
+  pointer-events: none;
 }
 
 .home-index--interactive .preview-stage {
-  min-height: clamp(520px, 39vw, 600px);
+  min-height: clamp(570px, 43vw, 700px);
 }
 
 .home-index--interactive .preview-empty,
@@ -1625,8 +1640,8 @@ h3 {
   inset: 0;
   display: grid;
   grid-template-rows: auto auto;
-  gap: 28px;
-  padding-top: 36px;
+  gap: 0;
+  padding-top: var(--preview-top-offset);
 }
 
 .home-index--interactive .preview-empty {
@@ -1647,7 +1662,7 @@ h3 {
 .home-index--interactive .preview-empty-frame,
 .home-index--interactive .preview-media {
   width: 100%;
-  max-width: 430px;
+  max-width: var(--preview-media-max);
   min-height: 0;
   aspect-ratio: 4 / 5;
   border: 1px dotted var(--home-frame);
@@ -1692,13 +1707,21 @@ h3 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: none;
+  transform: translateX(12px) scale(0.985);
+  transform-origin: top left;
+  transition:
+    opacity 300ms ease-in-out,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 300ms;
+  will-change: opacity, transform;
 }
 
 .home-index--interactive .preview-card.is-active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translateX(0) scale(1);
+  transition-delay: 0s;
 }
 
 .home-index--interactive .preview-media {
@@ -1719,10 +1742,10 @@ h3 {
 }
 
 .home-index--interactive .preview-caption {
-  max-width: 430px;
+  max-width: var(--preview-media-max);
   margin: 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--home-line-soft);
+  padding-top: 0;
+  border-top: 0;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 400;
@@ -1730,7 +1753,7 @@ h3 {
 }
 
 .home-index--interactive .preview-facts {
-  max-width: 430px;
+  max-width: var(--preview-media-max);
   border-top: 1px solid var(--home-line-soft);
 }
 
@@ -1773,23 +1796,25 @@ h3 {
 
 @media (max-width: 1500px) {
   .home-index--interactive {
-    --record-cols: minmax(50px, 0.45fr) minmax(142px, 1.24fr) minmax(52px, 0.48fr) minmax(176px, 1.5fr) minmax(112px, 0.92fr) minmax(92px, 0.82fr);
-    --record-gap: clamp(14px, 1.35vw, 22px);
-    grid-template-columns: minmax(0, 1fr) clamp(258px, 22vw, 330px);
-    column-gap: clamp(32px, 3.6vw, 54px);
+    --record-cols: minmax(44px, 0.42fr) minmax(126px, 1.12fr) minmax(48px, 0.44fr) minmax(154px, 1.28fr) minmax(92px, 0.78fr) minmax(78px, 0.68fr);
+    --record-gap: clamp(14px, 1.2vw, 20px);
+    --preview-media-max: 390px;
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 31vw, 470px);
+    column-gap: clamp(34px, 4vw, 60px);
   }
 
   .home-index--interactive .home-preview {
-    padding-left: clamp(28px, 3vw, 42px);
+    padding-left: clamp(18px, 2vw, 28px);
   }
 
   .home-index--interactive .preview-stage {
-    min-height: clamp(430px, 36vw, 540px);
+    min-height: clamp(500px, 42vw, 620px);
   }
 }
 
 @media (max-width: 1180px) {
   .home-index--interactive {
+    --preview-media-max: 540px;
     grid-template-columns: 1fr;
     padding-top: clamp(48px, 6vw, 70px);
   }
@@ -1843,7 +1868,7 @@ h3 {
 
   .home-index--interactive .preview-empty-frame,
   .home-index--interactive .preview-media {
-    max-width: min(430px, 100%);
+    max-width: min(var(--preview-media-max), 100%);
     aspect-ratio: 16 / 10;
   }
 }
