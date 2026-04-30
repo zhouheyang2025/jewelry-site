@@ -2648,4 +2648,108 @@ h3 {
   .zh-site.info-page .nav {
     gap: 10px 16px;
   }
+}/* === Tablet / iPad index layout emergency fix === */
+/* Put this at the very end of style.css */
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .home-index {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    align-content: start !important;
+    row-gap: 44px !important;
+  }
+
+  .home-index > .archive-mark {
+    grid-column: 1 / span 3 !important;
+  }
+
+  .home-statement {
+    grid-column: 4 / span 7 !important;
+    max-width: 560px !important;
+  }
+
+  .home-browser {
+    grid-column: 1 / -1 !important;
+    align-self: start !important;
+    order: initial !important;
+  }
+
+  .index-browser {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 32vw) !important;
+    gap: clamp(24px, 4vw, 44px) !important;
+    align-items: start !important;
+  }
+
+  .index-list,
+  .index-table-head {
+    min-width: 0 !important;
+  }
+
+  .index-preview {
+    display: block !important;
+    position: sticky !important;
+    top: 92px !important;
+    min-height: 280px !important;
+    width: auto !important;
+    transform: none !important;
+    grid-column: auto !important;
+    align-self: start !important;
+  }
+
+  .preview-stage {
+    position: relative !important;
+    min-height: 280px !important;
+  }
+
+  .preview-empty,
+  .preview-card {
+    position: absolute !important;
+    inset: 0 !important;
+    display: grid !important;
+    grid-template-rows: minmax(160px, 220px) auto !important;
+    gap: 14px !important;
+    padding-top: 0 !important;
+    transform: none !important;
+  }
+
+  .preview-media {
+    min-height: 160px !important;
+    max-height: 220px !important;
+  }
+
+  .preview-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+/* === Mobile safety fix === */
+@media (max-width: 760px) {
+  .home-index {
+    display: block !important;
+    padding-top: 42px !important;
+  }
+
+  .home-statement {
+    margin-bottom: 36px !important;
+  }
+
+  .home-browser {
+    display: block !important;
+  }
+
+  .index-browser {
+    display: block !important;
+  }
+
+  .index-preview {
+    position: static !important;
+    display: none !important;
+  }
+
+  .index-row {
+    position: relative !important;
+  }
 }
