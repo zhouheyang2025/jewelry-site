@@ -5646,3 +5646,158 @@ h3 {
     display: none !important;
   }
 }
+
+
+/* === 2026-04-30 TABLET INLINE PREVIEW FIX ===
+   Keeps the current tablet object-index position, moves the subtitle below the list,
+   and uses tap-to-open inline previews under each row on tablet. */
+@media (min-width: 768px) and (max-width: 1180px) {
+  body.home-page main {
+    margin-right: var(--margin) !important;
+    margin-left: var(--margin) !important;
+  }
+
+  body.home-page .home-index.home-index--interactive,
+  body.home-page .home-index.home-index--interactive.home-index--compact {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+    min-height: auto !important;
+    padding: 48px 0 96px !important;
+    align-content: start !important;
+  }
+
+  body.home-page .home-index--interactive .home-browser,
+  body.home-page .home-index--compact .home-browser,
+  body.home-page .home-index--interactive .index-browser.home-browser {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: clamp(126px, 14vw, 172px) !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    align-self: start !important;
+    transform: none !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.home-page .home-index--interactive .browser-heading {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 18px !important;
+    align-items: end !important;
+    margin: 0 0 18px !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head,
+  body.home-page .home-index--interactive .index-list {
+    min-width: 760px !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head {
+    display: grid !important;
+    grid-template-columns: 56px minmax(150px, 1.2fr) 62px minmax(180px, 1.4fr) minmax(120px, 0.9fr) minmax(96px, 0.75fr) !important;
+    gap: 18px !important;
+    padding: 14px 0 12px !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head span:last-child {
+    display: block !important;
+  }
+
+  body.home-page .home-index--interactive .index-row {
+    display: grid !important;
+    grid-template-columns: 56px minmax(150px, 1.2fr) 62px minmax(180px, 1.4fr) minmax(120px, 0.9fr) minmax(96px, 0.75fr) !important;
+    gap: 18px !important;
+    min-height: 72px !important;
+    padding: 18px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    align-items: baseline !important;
+  }
+
+  body.home-page .home-index--interactive .row-code,
+  body.home-page .home-index--interactive .row-title,
+  body.home-page .home-index--interactive .row-year,
+  body.home-page .home-index--interactive .row-material,
+  body.home-page .home-index--interactive .row-type,
+  body.home-page .home-index--interactive .row-status {
+    display: block !important;
+    grid-column: auto !important;
+  }
+
+  body.home-page .home-index--interactive .row-status {
+    display: block !important;
+  }
+
+  body.home-page .home-index--interactive .home-preview,
+  body.home-page .home-index--interactive .index-preview,
+  body.home-page .home-index--interactive .preview-stage > .preview-card {
+    display: none !important;
+  }
+
+  body.home-page .home-index--interactive .mobile-row-preview {
+    display: block !important;
+    width: min(100%, 520px) !important;
+    margin: 4px 0 28px 74px !important;
+    padding: 0 0 18px !important;
+  }
+
+  body.home-page .home-index--interactive .mobile-row-preview .preview-card {
+    position: static !important;
+    display: grid !important;
+    grid-template-rows: auto auto !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  body.home-page .home-index--interactive .mobile-row-preview .preview-media {
+    width: min(100%, 420px) !important;
+    max-width: 420px !important;
+    min-height: 220px !important;
+    aspect-ratio: 16 / 10 !important;
+    border: 1px solid var(--home-line-soft) !important;
+  }
+
+  body.home-page .home-index--interactive .mobile-row-preview .preview-caption {
+    max-width: 420px !important;
+    color: var(--muted) !important;
+    font-size: 0.74rem !important;
+    line-height: 1.5 !important;
+  }
+
+  body.home-page .home-index--interactive .home-statement,
+  body.home-page .home-index--compact .home-statement,
+  body.home-page .home-index--interactive .home-statement--compact {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+    margin: 74px 0 0 !important;
+    padding-top: 16px !important;
+    border-top: 1px solid var(--home-line-soft) !important;
+    align-self: start !important;
+    transform: none !important;
+  }
+
+  body.home-page .home-index--interactive .home-statement p {
+    max-width: 430px !important;
+    color: var(--muted) !important;
+    font-size: 0.78rem !important;
+    line-height: 1.55 !important;
+  }
+}

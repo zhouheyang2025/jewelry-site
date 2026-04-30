@@ -3,6 +3,7 @@ document.documentElement.classList.add("js-enabled");
 const hoverPreviewQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const mobilePreviewQuery = window.matchMedia("(max-width: 767px)");
 const tabletPreviewQuery = window.matchMedia("(min-width: 768px) and (max-width: 1180px)");
+const inlinePreviewQuery = window.matchMedia("(max-width: 1180px)");
 const browsers = document.querySelectorAll("[data-index-browser]");
 let lastInputWasPointer = false;
 
@@ -30,13 +31,13 @@ function bindIndexPreview(browser) {
   let activeKey = null;
 
   function usesHoverPreview() {
-    return hoverPreviewQuery.matches && !mobilePreviewQuery.matches;
+    return hoverPreviewQuery.matches && !inlinePreviewQuery.matches;
   }
 
   function usesTouchPreview() {
-    // Touch/click preview is only enabled on mobile.
-    // On tablets the right-side preview is disabled by CSS, so clicks should not create a misplaced preview state.
-    return isClickMode || (isAdaptiveMode && mobilePreviewQuery.matches);
+    // Touch/click preview is enabled on mobile and tablet.
+    // Desktop keeps hover preview; tablet uses an inline preview below each row.
+    return isClickMode || (isAdaptiveMode && inlinePreviewQuery.matches);
   }
 
   function removeInlinePreview() {
@@ -46,7 +47,7 @@ function bindIndexPreview(browser) {
   function renderInlinePreview(row, card) {
     removeInlinePreview();
 
-    if (!row || !card || !mobilePreviewQuery.matches) {
+    if (!row || !card || !inlinePreviewQuery.matches) {
       return;
     }
 
@@ -62,6 +63,7 @@ function bindIndexPreview(browser) {
     slot.className = "mobile-row-preview";
     clone.classList.add("is-active");
     slot.append(clone);
+    slot.addEventListener("click", () => clearPreview());
     listItem.append(slot);
   }
 
@@ -216,9 +218,11 @@ function bindIndexPreview(browser) {
   if (mobilePreviewQuery.addEventListener) {
     mobilePreviewQuery.addEventListener("change", handlePreviewModeChange);
     tabletPreviewQuery.addEventListener("change", handlePreviewModeChange);
+    inlinePreviewQuery.addEventListener("change", handlePreviewModeChange);
   } else {
     mobilePreviewQuery.addListener(handlePreviewModeChange);
     tabletPreviewQuery.addListener(handlePreviewModeChange);
+    inlinePreviewQuery.addListener(handlePreviewModeChange);
   }
 }
 
