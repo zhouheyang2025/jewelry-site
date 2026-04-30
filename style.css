@@ -5508,3 +5508,141 @@ h3 {
   }
 }
 
+/* === 2026-04-30 FINAL TABLET INDEX FIX ===
+   Scope: Index/home page only, tablet widths only.
+   Goal: prevent the object table from falling to the bottom and prevent hover/click previews from jumping or overlapping on iPad/tablet. */
+@media (min-width: 768px) and (max-width: 1180px) {
+  body.home-page main {
+    margin-right: var(--margin) !important;
+    margin-left: var(--margin) !important;
+  }
+
+  body.home-page .home-index.home-index--interactive,
+  body.home-page .home-index.home-index--interactive.home-index--compact {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+    min-height: auto !important;
+    padding: 48px 0 96px !important;
+    align-content: start !important;
+  }
+
+  body.home-page .home-index--interactive > .archive-mark {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 0 44px !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  body.home-page .home-index--interactive .home-statement,
+  body.home-page .home-index--compact .home-statement,
+  body.home-page .home-index--interactive .home-statement--compact {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: min(100%, 620px) !important;
+    max-width: 620px !important;
+    margin: 0 0 72px !important;
+    padding: 0 !important;
+    border-top: 0 !important;
+    align-self: start !important;
+    transform: none !important;
+  }
+
+  body.home-page .home-index--interactive .home-statement h1 {
+    margin: 0 0 20px !important;
+    font-size: clamp(1.8rem, 4vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  body.home-page .home-index--interactive .home-statement p {
+    max-width: 520px !important;
+    color: var(--muted) !important;
+    font-size: 0.84rem !important;
+    line-height: 1.58 !important;
+  }
+
+  body.home-page .home-index--interactive .home-browser,
+  body.home-page .home-index--compact .home-browser,
+  body.home-page .home-index--interactive .index-browser.home-browser {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-self: start !important;
+    transform: none !important;
+  }
+
+  body.home-page .home-index--interactive .browser-heading {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 18px !important;
+    align-items: end !important;
+    margin: 0 0 18px !important;
+  }
+
+  body.home-page .home-index--interactive .index-browser {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head,
+  body.home-page .home-index--interactive .index-list {
+    min-width: 760px !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head {
+    display: grid !important;
+    grid-template-columns: 56px minmax(150px, 1.2fr) 62px minmax(180px, 1.4fr) minmax(120px, 0.9fr) minmax(96px, 0.75fr) !important;
+    gap: 18px !important;
+    padding: 14px 0 12px !important;
+  }
+
+  body.home-page .home-index--interactive .index-table-head span:last-child {
+    display: block !important;
+  }
+
+  body.home-page .home-index--interactive .index-row {
+    display: grid !important;
+    grid-template-columns: 56px minmax(150px, 1.2fr) 62px minmax(180px, 1.4fr) minmax(120px, 0.9fr) minmax(96px, 0.75fr) !important;
+    gap: 18px !important;
+    min-height: 72px !important;
+    padding: 18px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    align-items: baseline !important;
+  }
+
+  body.home-page .home-index--interactive .row-code,
+  body.home-page .home-index--interactive .row-title,
+  body.home-page .home-index--interactive .row-year,
+  body.home-page .home-index--interactive .row-material,
+  body.home-page .home-index--interactive .row-type,
+  body.home-page .home-index--interactive .row-status {
+    display: block !important;
+    grid-column: auto !important;
+  }
+
+  body.home-page .home-index--interactive .row-status {
+    display: block !important;
+  }
+
+  /* Tablets are not reliable hover devices. Hide the desktop preview here to prevent jumping/overlap. */
+  body.home-page .home-index--interactive .home-preview,
+  body.home-page .home-index--interactive .index-preview,
+  body.home-page .home-index--interactive .preview-stage,
+  body.home-page .home-index--interactive .preview-card,
+  body.home-page .home-index--interactive .preview-empty,
+  body.home-page .home-index--interactive .mobile-row-preview {
+    display: none !important;
+  }
+}
