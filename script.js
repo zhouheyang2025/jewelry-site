@@ -2,7 +2,7 @@ document.documentElement.classList.add("js-enabled");
 
 const hoverPreviewQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const mobilePreviewQuery = window.matchMedia("(max-width: 767px)");
-const tabletPreviewQuery = window.matchMedia("(min-width: 768px) and (max-width: 1400px) and (pointer: coarse), (min-width: 768px) and (max-width: 1400px) and (hover: none)");
+const tabletPreviewQuery = window.matchMedia("(min-width: 768px) and (max-width: 1180px)");
 const browsers = document.querySelectorAll("[data-index-browser]");
 let lastInputWasPointer = false;
 
@@ -29,16 +29,14 @@ function bindIndexPreview(browser) {
   const isAdaptiveMode = previewMode === "adaptive";
   let activeKey = null;
 
-  function previewDisabledForTablet() {
-    return tabletPreviewQuery.matches;
-  }
-
   function usesHoverPreview() {
-    return hoverPreviewQuery.matches && !mobilePreviewQuery.matches && !previewDisabledForTablet();
+    return hoverPreviewQuery.matches && !mobilePreviewQuery.matches;
   }
 
   function usesTouchPreview() {
-    return !previewDisabledForTablet() && (isClickMode || (isAdaptiveMode && !usesHoverPreview()));
+    // Touch/click preview is only enabled on mobile.
+    // On tablets the right-side preview is disabled by CSS, so clicks should not create a misplaced preview state.
+    return isClickMode || (isAdaptiveMode && mobilePreviewQuery.matches);
   }
 
   function removeInlinePreview() {
@@ -139,6 +137,11 @@ function bindIndexPreview(browser) {
           return;
         }
 
+        if (!usesTouchPreview()) {
+          clearPreview();
+          return;
+        }
+
         if (activeKey === row.dataset.previewKey) {
           clearPreview();
           return;
@@ -212,13 +215,9 @@ function bindIndexPreview(browser) {
 
   if (mobilePreviewQuery.addEventListener) {
     mobilePreviewQuery.addEventListener("change", handlePreviewModeChange);
-  } else {
-    mobilePreviewQuery.addListener(handlePreviewModeChange);
-  }
-
-  if (tabletPreviewQuery.addEventListener) {
     tabletPreviewQuery.addEventListener("change", handlePreviewModeChange);
   } else {
+    mobilePreviewQuery.addListener(handlePreviewModeChange);
     tabletPreviewQuery.addListener(handlePreviewModeChange);
   }
 }

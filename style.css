@@ -5508,14 +5508,13 @@ h3 {
   }
 }
 
-
-/* === 2026-04-30 DEFINITIVE iPad / tablet index repair ===
-   This section intentionally overrides the earlier experimental index rules.
-   Tablet goal: no floating preview, no transformed blocks, no bottom-dropped table. */
-@media (min-width: 768px) and (max-width: 1400px) and (pointer: coarse),
-       (min-width: 768px) and (max-width: 1400px) and (hover: none) {
+/* === 2026-04-30 FINAL TABLET INDEX FIX ===
+   Scope: Index/home page only, tablet widths only.
+   Goal: prevent the object table from falling to the bottom and prevent hover/click previews from jumping or overlapping on iPad/tablet. */
+@media (min-width: 768px) and (max-width: 1180px) {
   body.home-page main {
-    margin: 0 var(--margin) !important;
+    margin-right: var(--margin) !important;
+    margin-left: var(--margin) !important;
   }
 
   body.home-page .home-index.home-index--interactive,
@@ -5525,36 +5524,27 @@ h3 {
     grid-template-rows: auto auto auto !important;
     row-gap: 0 !important;
     column-gap: 0 !important;
-    width: 100% !important;
     min-height: auto !important;
-    padding: clamp(42px, 6vw, 68px) 0 clamp(82px, 10vw, 120px) !important;
+    padding: 48px 0 96px !important;
     align-content: start !important;
-    align-items: start !important;
   }
 
   body.home-page .home-index--interactive > .archive-mark {
-    display: block !important;
     grid-column: 1 !important;
     grid-row: 1 !important;
-    width: 100% !important;
-    margin: 0 0 clamp(38px, 5vw, 54px) !important;
+    margin: 0 0 44px !important;
     padding: 0 !important;
     transform: none !important;
   }
 
-  body.home-page .home-index--interactive > .archive-mark::after {
-    display: none !important;
-  }
-
   body.home-page .home-index--interactive .home-statement,
   body.home-page .home-index--compact .home-statement,
-  body.home-page .home-statement.home-statement--compact {
-    display: block !important;
+  body.home-page .home-index--interactive .home-statement--compact {
     grid-column: 1 !important;
     grid-row: 2 !important;
-    width: min(100%, 640px) !important;
-    max-width: 640px !important;
-    margin: 0 0 clamp(56px, 7vw, 82px) !important;
+    width: min(100%, 620px) !important;
+    max-width: 620px !important;
+    margin: 0 0 72px !important;
     padding: 0 !important;
     border-top: 0 !important;
     align-self: start !important;
@@ -5562,49 +5552,46 @@ h3 {
   }
 
   body.home-page .home-index--interactive .home-statement h1 {
-    display: block !important;
-    margin: 0 0 18px !important;
-    font-size: clamp(1.9rem, 4.3vw, 2.45rem) !important;
+    margin: 0 0 20px !important;
+    font-size: clamp(1.8rem, 4vw, 2.35rem) !important;
     line-height: 1.12 !important;
-    font-weight: 500 !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
   }
 
   body.home-page .home-index--interactive .home-statement p {
-    display: block !important;
     max-width: 520px !important;
     color: var(--muted) !important;
-    font-size: 0.86rem !important;
+    font-size: 0.84rem !important;
     line-height: 1.58 !important;
   }
 
   body.home-page .home-index--interactive .home-browser,
   body.home-page .home-index--compact .home-browser,
-  body.home-page .index-browser.home-browser {
-    display: block !important;
+  body.home-page .home-index--interactive .index-browser.home-browser {
     grid-column: 1 !important;
     grid-row: 3 !important;
+    display: block !important;
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
     align-self: start !important;
     transform: none !important;
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.home-page .home-index--interactive .browser-heading {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 18px !important;
+    align-items: end !important;
+    margin: 0 0 18px !important;
   }
 
   body.home-page .home-index--interactive .index-browser {
     display: block !important;
     width: 100% !important;
-    max-width: none !important;
-  }
-
-  body.home-page .home-index--interactive .browser-heading {
-    display: block !important;
-    margin: 0 0 18px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   body.home-page .home-index--interactive .index-table-head,
@@ -5617,8 +5604,6 @@ h3 {
     grid-template-columns: 56px minmax(150px, 1.2fr) 62px minmax(180px, 1.4fr) minmax(120px, 0.9fr) minmax(96px, 0.75fr) !important;
     gap: 18px !important;
     padding: 14px 0 12px !important;
-    border-top: 1px solid var(--home-line-strong) !important;
-    border-bottom: 1px solid var(--home-line) !important;
   }
 
   body.home-page .home-index--interactive .index-table-head span:last-child {
@@ -5651,6 +5636,7 @@ h3 {
     display: block !important;
   }
 
+  /* Tablets are not reliable hover devices. Hide the desktop preview here to prevent jumping/overlap. */
   body.home-page .home-index--interactive .home-preview,
   body.home-page .home-index--interactive .index-preview,
   body.home-page .home-index--interactive .preview-stage,
@@ -5658,8 +5644,5 @@ h3 {
   body.home-page .home-index--interactive .preview-empty,
   body.home-page .home-index--interactive .mobile-row-preview {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
   }
 }
