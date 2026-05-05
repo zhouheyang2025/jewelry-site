@@ -1437,7 +1437,8 @@ h3 {
   }
 }
 
-body.home-page {
+body.home-page,
+body.info-page {
   --home-grid-size: 64px;
   --home-grid-subsize: 16px;
   --home-grid-line: rgba(16, 16, 16, 0.68);
@@ -1446,7 +1447,8 @@ body.home-page {
   isolation: isolate;
 }
 
-body.home-page::before {
+body.home-page::before,
+body.info-page::before {
   position: fixed;
   inset: -18vmax;
   z-index: 0;
@@ -1474,12 +1476,14 @@ body.home-page::before {
   will-change: transform, background-position;
 }
 
-body.home-page main {
+body.home-page main,
+body.info-page main {
   z-index: 1;
 }
 
 @media (prefers-color-scheme: dark) {
-  body.home-page {
+  body.home-page,
+  body.info-page {
     --home-grid-line: rgba(238, 238, 234, 0.58);
     --home-grid-subline: rgba(238, 238, 234, 0.22);
     --home-grid-opacity: 0.056;
@@ -1539,23 +1543,44 @@ body.home-page main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.home-page::before {
+  body.home-page::before,
+  body.info-page::before {
     animation: none;
     transform: none;
   }
 }
 
 @media (max-width: 767px) {
-  body.home-page {
+  body.home-page,
+  body.info-page {
     --home-grid-size: 56px;
     --home-grid-subsize: 14px;
     --home-grid-opacity: 0.036;
   }
 
-  body.home-page::before {
+  body.home-page::before,
+  body.info-page::before {
     animation: none;
     transform: none;
   }
+}
+
+.home-page .site-header,
+.info-page .site-header {
+  overflow: hidden;
+  isolation: isolate;
+  background: transparent;
+  background-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.home-page .brand,
+.home-page .nav,
+.info-page .brand,
+.info-page .nav {
+  position: relative;
+  z-index: 1;
 }
 
 .home-page .site-header {
