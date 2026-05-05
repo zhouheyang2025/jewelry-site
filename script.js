@@ -3,7 +3,7 @@ document.documentElement.classList.add("js-enabled");
 const hoverPreviewQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const mobilePreviewQuery = window.matchMedia("(max-width: 767px)");
 const tabletPreviewQuery = window.matchMedia("(min-width: 768px) and (max-width: 1180px)");
-const inlinePreviewQuery = window.matchMedia("(max-width: 1180px)");
+const inlinePreviewQuery = window.matchMedia("(max-width: 767px), ((min-width: 768px) and (max-width: 1180px) and (orientation: portrait))");
 const browsers = document.querySelectorAll("[data-index-browser]");
 let lastInputWasPointer = false;
 
@@ -35,9 +35,9 @@ function bindIndexPreview(browser) {
   }
 
   function usesTouchPreview() {
-    // Touch/click preview is enabled on mobile and tablet.
-    // Desktop keeps hover preview; tablet uses an inline preview below each row.
-    return isClickMode || (isAdaptiveMode && inlinePreviewQuery.matches);
+    // Touch/click preview is enabled when hover is unavailable.
+    // Mobile and portrait tablet render inline; landscape tablet uses the side preview.
+    return isClickMode || (isAdaptiveMode && !usesHoverPreview());
   }
 
   function removeInlinePreview() {
