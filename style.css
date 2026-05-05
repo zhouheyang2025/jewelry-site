@@ -1557,12 +1557,6 @@ body.info-page main {
     --home-grid-subsize: 14px;
     --home-grid-opacity: 0.036;
   }
-
-  body.home-page::before,
-  body.info-page::before {
-    animation: none;
-    transform: none;
-  }
 }
 
 .home-page .site-header,
