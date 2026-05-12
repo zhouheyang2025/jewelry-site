@@ -2217,7 +2217,7 @@ body.info-page main {
   }
 }
 
-/* Info page aligned to the Investigation index language. */
+/* Info page aligned to the Production Planning index language. */
 .info-page {
   --margin: clamp(24px, 4.25vw, 80px);
   --gap: clamp(22px, 3.2vw, 52px);
@@ -3392,10 +3392,10 @@ body.info-page main {
   background: linear-gradient(90deg, var(--scan-line-soft), var(--scan-line), var(--scan-line-soft));
   content: "";
   opacity: 0.36;
-  animation: investigationScanLine 5.8s ease-in-out infinite;
+  animation: productionPlanningScanLine 5.8s ease-in-out infinite;
 }
 
-@keyframes investigationScanLine {
+@keyframes productionPlanningScanLine {
   0% {
     top: 0;
     opacity: 0.16;
