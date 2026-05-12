@@ -2217,7 +2217,7 @@ body.info-page main {
   }
 }
 
-/* Info page aligned to the Production Planning index language. */
+/* Info page aligned to the ProductionPlanning index language. */
 .info-page {
   --margin: clamp(24px, 4.25vw, 80px);
   --gap: clamp(22px, 3.2vw, 52px);
