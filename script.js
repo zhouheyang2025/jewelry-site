@@ -250,13 +250,18 @@ function bindMeasurementGridRipples() {
   let pixelRatio = 1;
   let ripples = [];
   let frameRequest = 0;
-  const waveFrames = [
-    { at: 0, x: -10, y: 6, tx: -9, ty: 4, scale: 1.024, rotate: -0.12, skewX: 0.42, skewY: 0, originX: 0.24, originY: 0.76 },
-    { at: 0.24, x: 14, y: -11, tx: 8, ty: -8, scale: 1.038, rotate: 0.16, skewX: 0, skewY: -0.62, originX: 0.82, originY: 0.18 },
-    { at: 0.56, x: -8, y: 17, tx: -7, ty: 9, scale: 1.03, rotate: -0.18, skewX: -0.58, skewY: 0, originX: 0.16, originY: 0.42 },
-    { at: 0.78, x: 5, y: 14, tx: 2, ty: 7, scale: 1.034, rotate: 0.08, skewX: 0, skewY: 0.5, originX: 0.58, originY: 0.92 },
-    { at: 1, x: 16, y: 5, tx: 9, ty: 2, scale: 1.032, rotate: 0.14, skewX: 0, skewY: 0.46, originX: 0.92, originY: 0.62 }
-  ];
+  const stableWaveFrame = {
+    x: 0,
+    y: 0,
+    tx: 0,
+    ty: 0,
+    scale: 1,
+    rotate: 0,
+    skewX: 0,
+    skewY: 0,
+    originX: 0.5,
+    originY: 0.5
+  };
 
   function readNumber(value, fallback) {
     const parsed = Number.parseFloat(value);
@@ -288,48 +293,16 @@ function bindMeasurementGridRipples() {
     return Math.min((now - ripple.startedAt) / ripple.duration, 1);
   }
 
-  function easeOutCubic(value) {
-    return 1 - Math.pow(1 - value, 3);
-  }
-
   function easeOutSoft(value) {
     return 1 - Math.pow(1 - value, 1.15);
-  }
-
-  function easeInOut(value) {
-    return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2;
   }
 
   function mix(start, end, amount) {
     return start + (end - start) * amount;
   }
 
-  function readWaveFrame(now) {
-    if (reducedMotionQuery.matches) {
-      return waveFrames[0];
-    }
-
-    const cycle = 22000;
-    const rawProgress = (now % (cycle * 2)) / cycle;
-    const progress = rawProgress > 1 ? 2 - rawProgress : rawProgress;
-    const upperIndex = waveFrames.findIndex((frame) => frame.at >= progress);
-    const end = waveFrames[Math.max(upperIndex, 1)];
-    const start = waveFrames[Math.max(upperIndex - 1, 0)];
-    const span = end.at - start.at || 1;
-    const amount = easeInOut((progress - start.at) / span);
-
-    return {
-      x: mix(start.x, end.x, amount),
-      y: mix(start.y, end.y, amount),
-      tx: mix(start.tx, end.tx, amount),
-      ty: mix(start.ty, end.ty, amount),
-      scale: mix(start.scale, end.scale, amount),
-      rotate: mix(start.rotate, end.rotate, amount),
-      skewX: mix(start.skewX, end.skewX, amount),
-      skewY: mix(start.skewY, end.skewY, amount),
-      originX: mix(start.originX, end.originX, amount),
-      originY: mix(start.originY, end.originY, amount)
-    };
+  function readWaveFrame() {
+    return stableWaveFrame;
   }
 
   function transformPoint(x, y, wave) {
@@ -430,7 +403,7 @@ function bindMeasurementGridRipples() {
   function render(now) {
     context.clearRect(0, 0, width, height);
     const settings = readGridSettings();
-    const wave = readWaveFrame(now);
+    const wave = readWaveFrame();
 
     ripples = ripples.filter((ripple) => rippleProgress(ripple, now) < 1);
 
@@ -438,7 +411,7 @@ function bindMeasurementGridRipples() {
     strokeGridSet(settings, wave, now, settings.majorSize, settings.majorLine, 1, 1);
     context.globalAlpha = 1;
 
-    if (!reducedMotionQuery.matches || ripples.length) {
+    if (!reducedMotionQuery.matches && ripples.length) {
       frameRequest = window.requestAnimationFrame(render);
     } else {
       frameRequest = 0;
@@ -458,15 +431,15 @@ function bindMeasurementGridRipples() {
       x,
       y,
       startedAt: performance.now(),
-      duration: 4600,
-      maxRadius: Math.max(280, travel * 0.84),
-      wavelength: 74,
-      band: 96,
-      amplitude: Math.min(4.4, Math.max(2.4, Math.min(width, height) * 0.0052))
+      duration: 2800,
+      maxRadius: Math.max(180, Math.min(520, travel * 0.46)),
+      wavelength: 68,
+      band: 82,
+      amplitude: Math.min(1.8, Math.max(0.9, Math.min(width, height) * 0.0022))
     });
 
-    if (ripples.length > 5) {
-      ripples = ripples.slice(-5);
+    if (ripples.length > 3) {
+      ripples = ripples.slice(-3);
     }
 
     if (!frameRequest) {

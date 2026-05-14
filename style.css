@@ -1470,10 +1470,9 @@ body.info-page::before {
   content: "";
   opacity: var(--home-grid-opacity);
   pointer-events: none;
-  transform: translate3d(-9px, 4px, 0) scale(1.024) rotate(-0.12deg) skewX(0.42deg);
-  transform-origin: 24% 76%;
-  animation: homeMeasurementGridWave 22s cubic-bezier(0.45, 0, 0.25, 1) infinite alternate;
-  will-change: transform, background-position;
+  transform: none;
+  transform-origin: center;
+  animation: none;
 }
 
 .js-enabled body.home-page::before,
@@ -1572,6 +1571,37 @@ body.info-page main {
     --home-grid-size: 56px;
     --home-grid-subsize: 14px;
     --home-grid-opacity: 0.036;
+  }
+}
+
+@media (max-width: 1180px) {
+  body.home-page::after {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 12;
+    display: block;
+    height: clamp(118px, 16svh, 164px);
+    background: linear-gradient(
+      to bottom,
+      var(--paper) 0,
+      color-mix(in srgb, var(--paper) 96%, transparent) 42px,
+      color-mix(in srgb, var(--paper) 68%, transparent) 78px,
+      transparent 100%
+    );
+    content: "";
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 767px) {
+  body.home-page::after {
+    height: clamp(132px, 19svh, 182px);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape) {
+  body.home-page::after {
+    height: clamp(104px, 13svh, 138px);
   }
 }
 
