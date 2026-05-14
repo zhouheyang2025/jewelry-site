@@ -3484,3 +3484,24 @@ body.info-page main {
     aspect-ratio: 1 / 1;
   }
 }
+
+body.home-page .home-index--interactive .index-row,
+body.home-page .home-index--interactive .index-row * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.home-page .home-index--interactive .index-row {
+  touch-action: manipulation;
+}
+
+@media (hover: none), (pointer: coarse) {
+  body.home-page .home-index--interactive .index-row,
+  body.home-page .home-index--interactive .index-row:active,
+  body.home-page .home-index--interactive .index-row:hover,
+  body.home-page .home-index--interactive .index-row:focus,
+  body.home-page .home-index--interactive .index-row:focus-visible,
+  body.home-page .home-index--interactive .index-row.is-active {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+}
